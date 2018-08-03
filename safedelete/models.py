@@ -164,7 +164,7 @@ class SafeDeleteModel(models.Model):
             # Soft-delete on related objects before
             for related in related_objects(self):
                 if is_safedelete_cls(related.__class__):
-                    related.delete(force_policy=SOFT_DELETE, **kwargs)
+                    related.delete(force_policy=SOFT_DELETE_CASCADE, **kwargs)
             # soft-delete the object
             self.delete(force_policy=SOFT_DELETE, **kwargs)
 
